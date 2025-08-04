@@ -1,0 +1,37 @@
+{
+  "name": "tribal-wars-monitor",
+  "version": "1.0.0",
+  "description": "Tribal Wars TR94 Ennoblement Monitor with WhatsApp notifications",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node -r dotenv/config src/index.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "node --watch src/index.js",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "tribal-wars",
+    "monitor",
+    "whatsapp",
+    "notifications"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "node-cron": "^4.2.1",
+    "opossum": "^9.0.0",
+    "pino": "^8.17.2",
+    "qrcode": "^1.5.4",
+    "whatsapp-web.js": "^1.31.0",
+    "zod": "^4.0.14"
+  },
+  "devDependencies": {
+    "vitest": "^1.2.1"
+  }
+}

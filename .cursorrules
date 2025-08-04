@@ -1,0 +1,46 @@
+# Cursor Rules (STRICT)
+
+## Goal
+All generated code MUST follow SOLID, Clean Architecture, and Node.js best practices. AI suggestions MUST NOT violate these rules.
+
+## Architecture
+- Layers: `core` (domain/use-cases/ports), `infrastructure` (adapters), `interfaces` (API/CLI), `config`, `app.ts|js` (composition root/DI), `index.ts|js` (entry).
+- Dependency Inversion (DIP): use-cases depend ONLY on interfaces (ports). Third-party libs appear only in adapters.
+- Instantiation (`new`/`Client()`) happens ONLY in the composition root (`app`).
+
+## SOLID
+- SRP: One responsibility per file/class.
+- OCP: Extend behavior by adding new classes/adapters; minimize edits to existing code.
+- LSP/ISP: Ports are small and purposeful; implementations must honor the contract.
+- DIP: High-level modules depend on abstractions, not concretions.
+
+## Node.js Specific
+- Use Node 18+ and ESM. Prefer `async/await`.
+- IO calls should implement timeout + retry (exponential backoff).
+- Scheduling via `node-cron`; prevent spam with rate-limit/debounce when polling.
+- Logging: structured logs (pino). Never log secrets.
+
+## Style & Structure
+- Filenames: kebab-case. Classes/Interfaces: PascalCase. Functions/variables: camelCase. Constants: UPPER_SNAKE_CASE.
+- Keep functions short (~≤40 lines) and files reasonable (~≤400 lines).
+- Public APIs require JSDoc; complex logic must be commented.
+
+## Security & Config
+- All configuration comes from `.env`; no secrets hardcoded.
+- Validate inputs with a schema (e.g., zod/valibot).
+- For external calls: enforce timeout, retry, and (if needed) circuit breaker.
+- Validate file/media type and size before processing.
+
+## Testing & Quality
+- Unit tests for use-cases; integration tests for critical flows.
+- Do not suggest commits/merges without lint/format/tests passing.
+
+## Avoid
+- Global mutable state; direct third-party dependencies in the domain layer.
+- Long methods, empty `catch` blocks, logging sensitive data.
+- Deprecated/weak libraries.
+
+## AI Expectations
+- For nontrivial functions, include a brief rationale and usage example.
+- When adding a dependency, briefly explain the trade-offs.
+- Always state which layer the code belongs to and place it accordingly.
