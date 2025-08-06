@@ -66,7 +66,9 @@ export class PollAndNotify {
         
         // Eğer filtreler aktifse, sadece SiSu klanının eventlerini al
         if (this.filters) {
-          return (event.newTribe === 'SiSu' || event.oldTribe === 'SiSu');
+          return (event.newTribe === 'SiSu' || event.oldTribe === 'SiSu')
+          // && event.x < 452 && event.y > 462
+          ;
         }
         
         // Filtreler aktif değilse, tüm eventleri al

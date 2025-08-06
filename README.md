@@ -5,7 +5,7 @@ A Node.js application that monitors Tribal Wars TR94 ennoblements and sends What
 ## Features
 
 - **Web Scraping**: Monitors Tribal Wars TR94 ennoblements page
-- **Smart Filtering**: Filters events by clan (SiSu) and coordinates (x < 452 AND y > 462)
+- **Smart Filtering**: Filters events by clan (SiSu) and optional coordinates (configurable)
 - **WhatsApp Notifications**: Sends notifications via WhatsApp Web
 - **Duplicate Prevention**: Uses hash-based deduplication to prevent spam
 - **Scheduled Polling**: Configurable cron-based polling
